@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>invite_me</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h1>invite_me</h1>
+    <p><span class="text-primary">If you have a keybase account with at least one Twitter, Github or Reddit proof, you can get <mark>10 ETH</mark> of the PoA network.</span>
+    </p>
+    <p><span class="text-primary">You have to connect to the private PoA network by connecting your MetaMask to a Custom RPC and unlocking it.</span></p>
+    <div class="form-group">
+        <label for="usr">Name of your keybase.io identity (username):</label>
+        <input type="text" class="form-control" id="usr">
+    </div>
+    <button id="create" type="button" class="btn btn-primary">Sign Request</button>
+    <div id="pre"></div>
+    <div id="info" class='alert alert-success'></div>
+    <div id="trx"></div>
+    <div id="verifyPanel"></div>
+    <div id="result"></div>
+</div>
+
+<script>
+    $('body').on('click', 'button#verify', function () {
+        $('#verify').prop("disabled", true)
+        $('#verifyPanel').append("<br/><div class='alert alert-info'>We will try to load the file <code>https://" + document.getElementById("usr").value + ".keybase.pub/invite_me.json</code></div>");
+        $.get("/verify?user=" + $('#usr').val(), function (data) {
+            if (data.startsWith("ERROR")) {
+                $('#result').append("<div class='alert alert-danger'><b>" + data + "</b></div>");
+            } else {
+                $('#result').append("<div class='alert alert-success'>Successfully sent transaction <b>" + data + "</b>. Check your account balance.</div>");
+            }
+        });
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script src="https://rawgit.com/emn178/js-sha3/master/build/sha3.min.js"></script>
+<script>method = keccak_256;
+new ClipboardJS('.btn');</script>
+<script src="json.js" language="javascript"></script>
+<script src="sign.js" language="javascript"></script>
+</body>
+</html>

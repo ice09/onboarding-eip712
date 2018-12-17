@@ -50,8 +50,8 @@ public class SignatureService {
                         Numeric.toHexStringNoPrefix(Hash.sha3(Numeric.hexStringToByteArray(domainAsString))) +
                         Numeric.toHexStringNoPrefix(Hash.sha3(Numeric.hexStringToByteArray(
                                 Numeric.toHexStringNoPrefix(akycType) +
-                                Numeric.toHexStringWithPrefixZeroPadded(Numeric.toBigInt(user), 64).substring(2) +
-                                Numeric.toHexStringWithPrefixZeroPadded(Numeric.toBigInt(proof), 64).substring(2) +
+                                Numeric.toHexStringNoPrefix(user) +
+                                Numeric.toHexStringNoPrefix(proof) +
                                 "000000000000000000000000" + useraddress.substring(2).toLowerCase()))
                         ))));
         log.info("proof plain:" + proofStr);

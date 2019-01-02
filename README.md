@@ -1,6 +1,6 @@
 # EIP-712 Onboarding 
 
-Note: The corresponsing blog post is here: http://blockchainers.org/index.php/2018/12/30/invite_me-onboarding-to-ethereum-chains-with-keybase-io-identity-verification-and-eip-712/
+Note: The corresponding blog post is here: http://blockchainers.org/index.php/2018/12/30/invite_me-onboarding-to-ethereum-chains-with-keybase-io-identity-verification-and-eip-712/
 
 In this demo users are identified with either their Twitter, Github or Reddit accounts via Keybase and 
 are onboarded (by sending 10 ETH) to a private Ethereum chain.   
